@@ -573,6 +573,44 @@ CREATE INDEX idx_analyses_metadata_source ON analyses((metadata->>'source'));
 CREATE INDEX idx_issues_location_file ON issues((location->>'file'));
 ```
 
+### 4.4 Data Retention and Archival
+
+| Data Type | Hot Storage | Warm Storage | Cold Storage |
+|-----------|-------------|--------------|--------------|
+| Analysis results | 30 days | 6 months | 2 years |
+| Issue details | 30 days | 3 months | 1 year |
+| Audit logs | 90 days | 1 year | 7 years |
+| Session data | 24 hours | N/A | N/A |
+
+**Archival Strategy:**
+- Automatic partition pruning for time-series data
+- Weekly VACUUM ANALYZE for table statistics
+- Monthly pg_repack for table bloat
+
+### 4.5 Query Optimization Patterns
+
+```sql
+-- Efficient pagination with cursor
+SELECT * FROM analyses 
+WHERE project_id = $1 AND created_at < $2
+ORDER BY created_at DESC
+LIMIT 20;
+
+-- Materialized view for dashboard aggregates
+CREATE MATERIALIZED VIEW project_stats AS
+SELECT 
+  project_id,
+  COUNT(*) as total_analyses,
+  AVG(trust_score) as avg_trust_score,
+  SUM(files_analyzed) as total_files
+FROM analyses
+WHERE status = 'complete'
+GROUP BY project_id;
+
+-- Refresh strategy: every 5 minutes
+REFRESH MATERIALIZED VIEW CONCURRENTLY project_stats;
+```
+
 ---
 
 ## 5. API Design
