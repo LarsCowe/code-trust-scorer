@@ -78,6 +78,11 @@ describe("Utils", () => {
       const result = formatRelativeTime(date);
       expect(result).toContain("day");
     });
+
+    it("should handle invalid date strings", () => {
+      const result = formatRelativeTime("not-a-date");
+      expect(result).toBe("Unknown");
+    });
   });
 
   describe("generateId", () => {

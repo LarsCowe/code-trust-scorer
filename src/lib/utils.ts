@@ -27,6 +27,12 @@ export function formatDate(date: Date | string): string {
  */
 export function formatRelativeTime(date: Date | string): string {
   const d = typeof date === "string" ? new Date(date) : date;
+  
+  // Handle invalid dates gracefully
+  if (isNaN(d.getTime())) {
+    return "Unknown";
+  }
+  
   const now = new Date();
   const diffMs = now.getTime() - d.getTime();
   const diffSec = Math.floor(diffMs / 1000);
