@@ -1,125 +1,36 @@
-# Code Trust Scorer
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-> Analyze AI-generated code for quality signals and get a trust score before you merge.
+## Getting Started
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
-
-## 🎯 The Problem
-
-84% of developers now use AI coding tools like GitHub Copilot, Cursor, and Claude Code. But here's the catch: **46% don't trust the output**. The #1 frustration cited by developers is dealing with "AI solutions that are almost right, but not quite," which often makes debugging more time-consuming than writing code from scratch.
-
-**Code Trust Scorer** solves this by analyzing AI-generated code and providing:
-- A **Trust Score** (0-100) based on 50+ quality signals
-- Specific **warnings** about potential issues
-- **Recommendations** for improvement
-
-## 🚀 Features
-
-- **Hallucination Detection** - Identifies API calls that don't exist or have wrong signatures
-- **Deprecated Method Alerts** - Catches usage of deprecated or removed APIs
-- **Security Scanning** - Detects common security anti-patterns in AI output
-- **Pattern Analysis** - Recognizes over-abstraction and copy-paste patterns
-- **Framework Validation** - Verifies code against latest framework versions
-- **Trust Scoring** - Aggregated score with confidence intervals
-
-## 📚 Documentation
-
-### Planning Documents
-- [Product Brief](docs/product-brief.md) - Vision, problem statement, and market opportunity
-- [Product Requirements Document](docs/prd.md) - Detailed specifications and requirements
-- [UX Design](docs/ux-design.md) - User flows, wireframes, and interaction patterns
-- [Architecture](docs/architecture.md) - Technical architecture and system design
-- [Epics & User Stories](docs/epics.md) - Development roadmap and acceptance criteria
-
-### Reference
-- [Glossary](docs/glossary.md) - Definitions of key terms and concepts
-- [FAQ](docs/faq.md) - Frequently asked questions
-
-## 🛠 Tech Stack
-
-- **Frontend:** Next.js 16, TypeScript, Tailwind CSS v4, shadcn/ui
-- **Backend:** Next.js API Routes, tRPC
-- **Database:** Neon Postgres with Drizzle ORM
-- **Analysis Engine:** Tree-sitter, custom AST analyzers
-- **AI/ML:** Embeddings for pattern matching, rule-based detection
-- **Infrastructure:** Vercel, GitHub Actions
-
-## 🏃 Quick Start
+First, run the development server:
 
 ```bash
-# Clone the repository
-git clone https://github.com/LarsCowe/code-trust-scorer.git
-cd code-trust-scorer
-
-# Install dependencies
-pnpm install
-
-# Set up environment variables
-cp .env.example .env.local
-
-# Run database migrations
-pnpm db:push
-
-# Start development server
+npm run dev
+# or
+yarn dev
+# or
 pnpm dev
+# or
+bun dev
 ```
 
-## 📖 Usage
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-### VS Code Extension
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-```bash
-# Install from VS Code Marketplace
-ext install code-trust-scorer
-```
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### CLI
+## Learn More
 
-```bash
-# Install globally
-npm install -g @code-trust-scorer/cli
+To learn more about Next.js, take a look at the following resources:
 
-# Analyze a file
-cts analyze ./src/component.tsx
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-# Analyze with verbose output
-cts analyze ./src --verbose --format json
-```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-### API
+## Deploy on Vercel
 
-```typescript
-import { analyzeCode } from '@code-trust-scorer/sdk';
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-const result = await analyzeCode({
-  code: `function fetchUser(id) { ... }`,
-  language: 'typescript',
-  context: {
-    framework: 'nextjs',
-    version: '16.0.0'
-  }
-});
-
-console.log(result.trustScore); // 78
-console.log(result.warnings);   // [...issues found]
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) for details.
-
-## 🙏 Acknowledgments
-
-This project was inspired by:
-- Mitchell Hashimoto's [AI Adoption Journey](https://mitchellh.com/writing/my-ai-adoption-journey)
-- The Stack Overflow Developer Survey 2025
-- Countless developers frustrated with AI-generated code quality
-
----
-
-Built with ❤️ by the Code Trust Scorer team
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
