@@ -668,6 +668,79 @@ Rate Limits:
   - Enterprise: 1000 requests/minute
 ```
 
+### 5.2.1 API Error Responses
+
+All errors follow RFC 7807 Problem Details format:
+
+```json
+{
+  "type": "https://codetrust.dev/errors/validation-failed",
+  "title": "Validation Failed",
+  "status": 400,
+  "detail": "The request body contains invalid data",
+  "instance": "/v1/analyze",
+  "errors": [
+    {
+      "field": "code",
+      "message": "code is required and must be a string"
+    }
+  ],
+  "traceId": "abc123-def456"
+}
+```
+
+**Standard Error Codes:**
+
+| HTTP Status | Error Type | Description |
+|-------------|------------|-------------|
+| 400 | `validation-failed` | Request validation failed |
+| 401 | `unauthorized` | Missing or invalid API key |
+| 403 | `forbidden` | Valid API key but insufficient permissions |
+| 404 | `not-found` | Resource not found |
+| 409 | `conflict` | Resource already exists or state conflict |
+| 422 | `analysis-failed` | Code analysis could not be completed |
+| 429 | `rate-limited` | Rate limit exceeded |
+| 500 | `internal-error` | Unexpected server error |
+| 503 | `service-unavailable` | Temporary service outage |
+
+**Error Response Examples:**
+
+```json
+// 401 Unauthorized
+{
+  "type": "https://codetrust.dev/errors/unauthorized",
+  "title": "Unauthorized",
+  "status": 401,
+  "detail": "API key is missing or invalid",
+  "instance": "/v1/projects"
+}
+
+// 429 Rate Limited
+{
+  "type": "https://codetrust.dev/errors/rate-limited",
+  "title": "Rate Limit Exceeded",
+  "status": 429,
+  "detail": "You have exceeded 30 requests per minute",
+  "instance": "/v1/analyze",
+  "retryAfter": 32
+}
+
+// 422 Analysis Failed
+{
+  "type": "https://codetrust.dev/errors/analysis-failed",
+  "title": "Analysis Failed",
+  "status": 422,
+  "detail": "Could not parse TypeScript file",
+  "instance": "/v1/analyze",
+  "errors": [
+    {
+      "line": 42,
+      "message": "Unexpected token at position 156"
+    }
+  ]
+}
+```
+
 ### 5.3 WebSocket Events
 
 For real-time updates (VS Code extension):
