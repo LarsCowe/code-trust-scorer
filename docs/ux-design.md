@@ -1139,6 +1139,51 @@ Password
 - Notification management
 - Quick status checks
 
+### 9.5 Mobile-First Design Patterns
+
+#### 9.5.1 Thumb Zone Optimization
+
+All primary actions placed in bottom 50% of screen for easy thumb access. Critical buttons (Approve, Reject, Dismiss) positioned in bottom action bar.
+
+#### 9.5.2 Swipe Gestures
+
+| Gesture | Action |
+|---------|--------|
+| Swipe left on issue | Dismiss/Ignore |
+| Swipe right on issue | Mark as resolved |
+| Pull down | Refresh analysis |
+| Swipe between tabs | Navigate sections |
+
+#### 9.5.3 Mobile Notifications
+
+Push notifications for:
+- Analysis complete (when triggered remotely)
+- Trust score drops below threshold
+- Team member requests review
+- CI/CD pipeline failures
+
+Notification format:
+```
+[Project Name] Trust Score: 67/100
+3 new issues detected. Tap to review.
+```
+
+#### 9.5.4 Offline Support
+
+Limited offline capabilities:
+- View cached analysis results
+- Browse historical data
+- Queue issues for later review
+- Sync when connection restored
+
+### 9.6 Tablet-Specific Optimizations
+
+Split-view support for iPad and Android tablets:
+- Left pane: Issue list
+- Right pane: Code context
+- Drag issues to different states
+- Multi-select with touch
+
 ---
 
 ## 10. Accessibility Requirements
