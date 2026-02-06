@@ -25,11 +25,16 @@
 
 ## 📚 Documentation
 
+### Planning Documents
 - [Product Brief](docs/product-brief.md) - Vision, problem statement, and market opportunity
 - [Product Requirements Document](docs/prd.md) - Detailed specifications and requirements
 - [UX Design](docs/ux-design.md) - User flows, wireframes, and interaction patterns
 - [Architecture](docs/architecture.md) - Technical architecture and system design
 - [Epics & User Stories](docs/epics.md) - Development roadmap and acceptance criteria
+
+### Reference
+- [Glossary](docs/glossary.md) - Definitions of key terms and concepts
+- [FAQ](docs/faq.md) - Frequently asked questions
 
 ## 🛠 Tech Stack
 
