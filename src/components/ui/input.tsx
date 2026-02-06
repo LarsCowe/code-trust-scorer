@@ -16,7 +16,8 @@ export interface InputProps
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, error, label, hint, leftIcon, rightIcon, id, ...props }, ref) => {
     const [showPassword, setShowPassword] = React.useState(false);
-    const inputId = id ?? React.useId();
+    const generatedId = React.useId();
+    const inputId = id ?? generatedId;
     const isPassword = type === "password";
     const inputType = isPassword && showPassword ? "text" : type;
 
