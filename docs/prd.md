@@ -518,6 +518,18 @@ Object.entries(obj).map(x => x.key) // key doesn't exist
 _.deepClone(obj) // Should suggest: _.cloneDeep()
 ```
 
+**Edge Cases:**
+
+| Edge Case | Expected Behavior |
+|-----------|-------------------|
+| Method exists in newer version | Warning with version info |
+| Method name is typo | Suggest correct spelling with Levenshtein distance |
+| Custom user-defined method | No false positive (check scope) |
+| Polyfilled method | Check for polyfill presence |
+| Monkey-patched prototype | Detect prototype extension patterns |
+| Dynamic method calls (e.g., `obj[methodName]()`) | Skip or low-confidence warning |
+| Third-party library with incomplete types | Lower confidence, suggest checking docs |
+
 ---
 
 #### User Story 1.5: Detect Deprecated Methods
