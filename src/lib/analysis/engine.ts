@@ -256,12 +256,23 @@ const QUALITY_PATTERNS: Array<{
   },
 ];
 
+/**
+ * Calculate line and column number from character index in code
+ * @param code - The source code string
+ * @param index - The character index
+ * @returns Object with line (1-indexed) and column (1-indexed)
+ */
 function getLineAndColumn(code: string, index: number): { line: number; column: number } {
+  if (index < 0 || index > code.length) {
+    return { line: 1, column: 1 };
+  }
+  
   const lines = code.substring(0, index).split("\n");
-  return {
-    line: lines.length,
-    column: (lines[lines.length - 1]?.length ?? 0) + 1,
-  };
+  const line = lines.length;
+  const lastLine = lines[lines.length - 1];
+  const column = (lastLine?.length ?? 0) + 1;
+  
+  return { line, column };
 }
 
 function extractCodeSnippet(code: string, line: number, contextLines: number = 2): string {
