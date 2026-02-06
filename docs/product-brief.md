@@ -698,6 +698,30 @@ Snyk only covers security. We cover security plus all other AI-specific quality 
 | Free tier | ✅ | ❌ | ✅ | ✅ |
 | Modern UX | ✅ | ⚠️ | ❌ | ✅ |
 
+### 6.5 Competitive Response Scenarios
+
+#### 6.5.1 If SonarQube Adds AI Detection
+
+**Likelihood:** Medium (12-18 months)
+**Response:** Emphasize depth over breadth. Our AI-first architecture allows faster iteration on AI-specific patterns.
+
+#### 6.5.2 If GitHub Adds Native Trust Scoring
+
+**Likelihood:** Low-Medium (18-24 months)  
+**Response:** Position as enterprise-grade with deeper analysis. GitHub will likely offer basic scoring; we offer comprehensive evaluation.
+
+#### 6.5.3 If AI Tools Add Self-Verification
+
+**Likelihood:** High (6-12 months)
+**Response:** Emphasize independence and objectivity. Self-verification has inherent conflicts of interest.
+
+### 6.6 Barriers to Entry
+
+1. **Technical Moat:** Our hallucination detection algorithms require significant ML expertise
+2. **Data Moat:** Community feedback creates improving detection patterns
+3. **Integration Moat:** Deep IDE and CI/CD integrations take time to build
+4. **Brand Moat:** Early thought leadership in AI code trust space
+
 ### 6.5 Barriers to Entry
 
 **Our Moats:**
