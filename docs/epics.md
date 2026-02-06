@@ -197,6 +197,21 @@ const flat = array.flatten(); // Suggest: array.flat()
 // Should detect: Wrong signature
 JSON.parse(obj, null, 2); // parse() doesn't take 3 args
 
+// Should detect: Non-existent lodash method
+_.deepMerge(a, b); // Suggest: _.merge() or _.mergeWith()
+
+// Should detect: Non-existent React hook
+useLayoutState(initialValue); // Suggest: useState or useLayoutEffect
+```
+
+**Definition of Done:**
+- [ ] All acceptance criteria met
+- [ ] Code coverage >80%
+- [ ] Performance benchmarks passing
+- [ ] Documentation updated
+- [ ] PR reviewed and approved
+- [ ] Deployed to staging environment
+
 // Should NOT detect: Valid custom method
 myArray.customMethod(); // Could be user-defined
 ```
