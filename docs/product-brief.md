@@ -59,6 +59,14 @@ Code Trust Scorer integrates with popular development environments and CI/CD pip
 
 Q2 2026
 
+### 1.7 Investment Highlights
+
+- **$47B TAM:** The code quality and developer tools market continues rapid growth
+- **First-Mover Advantage:** No competitor specifically focuses on AI-generated code trust
+- **Network Effects:** Community feedback improves detection accuracy for all users
+- **Land and Expand:** Free tier drives adoption, enterprise features drive revenue
+- **Capital Efficient:** Leverages existing open-source tooling and cloud infrastructure
+
 ---
 
 ## 2. Problem Statement
